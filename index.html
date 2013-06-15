@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6 old-ie"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7 old-ie"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8 old-ie"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9">        <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en"> 
+<!--<![endif]-->
+
+<head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Description goes here!" />
+    <meta name="keywords" content="keywords, go, here" />
+    <meta name="author" content="Adrian Thomas-Prestemon" />
+    <!--<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0" />-->
+    <meta name="viewport" content="maximum-scale=1.0,user-scalable=no,width=device-width" />
+    <title>ENCODER RING</title>
+    <script src="./assets/js/jquery-1.9.1.min.js"></script>
+    <script src="./assets/js/util.js"></script>
+    <script src="./assets/js/code.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+    <noscript>
+        <p class="error">This page requires JavaScript to function. There is no server-side component to process your input.</p>
+    </noscript>
+    <header>
+        <h1>Super Spy Encoder Ring</h1>
+    </header>
+    <nav>
+        <h2>Select a Cipher:</h2>
+        <ul>
+            <li class="active"><a href="#caesar">Caesar Shift</a></li>
+            <li><a href="#substitution">Substitution</a></li>
+            <li><a href="#vignere">Vignere</a></li>
+        </ul>
+    </nav>
+    <div id="content">
+        <form id="mode" class="clearfix">
+            <label for="mode-encode" class="mode active" data-mode="encode">Encode</label>
+            <label for="mode-decode" class="mode" data-mode="decode">Decode</label>
+            <input id="mode-encode" type="radio" name="mode" value="encode" checked="checked" />
+            <input id="mode-decode" type="radio" name="mode" value="decode" />
+        </form>
+        <form class="page active" id="caesar">
+            <h3>Caesar Shift</h3>
+            <fieldset class="input">
+                <legend>Input</legend>
+                <label for="caesarInput" data-text-encode="Unencrypted Input:" data-text-decode="Encrypted Input:">Unencrypted Message:</label>
+                <textarea rows="5" cols="30" id="caesarInput">THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.</textarea>
+            </fieldset>
+            <fieldset class="setup">
+                <legend>Setup</legend>
+                <label for="caesarNum" data-text-encode="How many spaces to shift?" data-text-decode="How many spaces to unshift?">How many spaces to shift?</label>
+                <input type="button" class="shift decrement" data-action="decrement" data-target="caesarNum" value="-" /><input id="caesarNum" type="number" value="3" /><input type="button" class="shift increment" data-action="increment" data-target="caesarNum" value="+" />
+            </fieldset>
+            <fieldset class="action">
+                <legend>Action</legend>
+                <input type="submit" value="GO" />
+            </fieldset>
+            <fieldset class="output">
+                <legend>Output</legend>
+                <label for="caesarOutput" data-text-encode="Encrypted Output:" data-text-decode="Decrypted Output:">Encrypted Output:</label>
+                <textarea rows="5" cols="30" id="caesarOutput"></textarea>
+            </fieldset>
+        </form>
+        <form class="page" id="substitution">
+            <h3>Straight Substitution</h3>
+            <fieldset class="input">
+                <legend>Input</legend>
+                <label for="subInput" data-text-encode="Unencrypted Input:" data-text-decode="Encrypted Input:">Unencrypted Input:</label>
+                <textarea rows="5" cols="30" id="subInput">THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.</textarea>
+            </fieldset>
+            <fieldset class="setup">
+                <legend>Setup</legend>
+                <label for="subSource" data-text-encode="Source Alphabet:" data-text-decode="Key String:">Source Alphabet:</label>
+                <textarea rows="5" cols="30" id="subSource">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789~`!@#$%^&*()_-+={}[]|\:;"'<>,.?/</textarea>
+                <label for="subKey" data-text-encode="Key String:" data-text-decode="Source Alphabet:">Key String:</label>
+                <textarea rows="5" cols="30" id="subKey">~!QAZ1@WSX2#E DC3$RFV4%TGB5^YHN6&UJM7*IK<8,(OL>9.)P:?0/;_{"-['+}=]|\`</textarea>
+            </fieldset>
+            <fieldset class="action">
+                <legend>Action</legend>
+                <input type="submit" value="GO" />
+            </fieldset>
+            <fieldset class="output">
+                <legend>Output</legend>
+                <label for="subOutput" data-text-encode="Encrypted Output:" data-text-decode="Decrypted Output:">Encrypted Output:</label>
+                <textarea rows="5" cols="30" id="subOutput"></textarea>
+            </fieldset>
+        </form>
+        <form class="page" id="vignere">
+            <h3>Vignere Substitution</h3>
+            <fieldset class="input">
+                <legend>Input</legend>
+                <label for="vignereInput" data-text-encode="Unencrypted Input:" data-text-decode="Encrypted Input:">Unencrypted Input:</label>
+                <textarea rows="5" cols="30" id="vignereInput">THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.</textarea>
+            </fieldset>
+            <fieldset class="setup">
+                <legend>Setup</legend>
+                <label for="vignereKey">Key string:</label>
+                <input id="vignereKey" type="text" value="VIGNERE" />
+            </fieldset>
+            <fieldset class="action">
+                <legend>Action</legend>
+                <input type="submit" value="GO" />
+            </fieldset>
+            <fieldset class="output">
+                <legend>Output</legend>
+                <label for="vignereOutput" data-text-encode="Encrypted Output:" data-text-decode="Decrypted Output:">Encrypted Output:</label>
+                <textarea rows="5" cols="30" id="vignereOutput"></textarea>
+            </fieldset>
+        </form>
+    </div>
+    
+</body>
+
+</html>
